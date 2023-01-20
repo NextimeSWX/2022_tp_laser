@@ -19,7 +19,10 @@ t_accurate_pos send_ray(struct map *map,
 
     len = 0;
     pixel = (map->width * (int)start->y) + (int)start->x;
-    while (map->map[pixel] != 1) {
+    if (map->map[pixel] == 1) {
+        pos = *start;
+    }
+    while (map->map[pixel] != 1 && map->map[pixel] == 0) {
         pos = move_forward(start, angle, len);
         pixel = (map->width * (int)pos.y) + (int)pos.x;
         len += 1;

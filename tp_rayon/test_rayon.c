@@ -38,7 +38,7 @@ int main(void)
     while (angle <= 6.283) {
     draw_impact(&map, pxa, &pos, angle);
     angle = angle + 0.017;
-      }
+     }
 
     bunny_blit(&win->buffer, &pxa->clipable, NULL);
     bunny_display(win);
