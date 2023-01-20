@@ -19,6 +19,5 @@ void draw_impact(struct map *map,
 
     pos = send_ray(map, start, angle);
     posa = pos_from_accurate(&pos);
-    posa = stu_tile_size(posa, map);
     put_pixel(&posa, pxa, RED);
 }

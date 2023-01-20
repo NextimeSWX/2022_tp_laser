@@ -14,17 +14,20 @@ t_accurate_pos send_ray(struct map *map,
                         double angle)
 {
     t_bunny_accurate_position pos;
+    t_bunny_accurate_position pxi;
     int pixel;
     int len;
 
     len = 0;
-    pixel = (map->width * (int)start->y) + (int)start->x;
+    pixel = (map->width * (int)start->y) +(int)start->x;
+    pxi.x = start->x * map->tile_size;
+    pxi.y = start->y * map->tile_size;
     if (map->map[pixel] == 1) {
         pos = *start;
     }
-    while (map->map[pixel] != 1 && map->map[pixel] == 0) {
-        pos = move_forward(start, angle, len);
-        pixel = (map->width * (int)pos.y) + (int)pos.x;
+    while (map->map[pixel] != 1 ) {
+        pos = move_forward(&pxi, angle, len);
+        pixel = (map->width * ((int)pos.y / map->tile_size)) + ((int)pos.x / map->tile_size);
         len += 1;
     }
     return (pos);

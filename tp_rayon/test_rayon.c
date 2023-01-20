@@ -25,7 +25,7 @@ int main(void)
     map.map       = &mx[0];
     pos.x         = 2.5;
     pos.y         = 2.5;
-    //angle         = 0;
+    angle         = 0;
     win           = bunny_start(map.width * map.tile_size,
                                 map.height * map.tile_size,
                                 false,
@@ -34,11 +34,14 @@ int main(void)
     stu_clear_pixelarray(pxa, BLACK);
 
     // Travaillez ici
-    angle = 0;
-    while (angle <= 6.283) {
-    draw_impact(&map, pxa, &pos, angle);
-    angle = angle + 0.017;
-     }
+    int i;
+
+    i = 0;
+    while (i <= 360) {
+        angle = deg_to_rads(i);
+        draw_impact(&map, pxa, &pos, angle);
+        i += 1;
+    }
 
     bunny_blit(&win->buffer, &pxa->clipable, NULL);
     bunny_display(win);
