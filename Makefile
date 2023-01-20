@@ -13,11 +13,9 @@ SRCS	=	tp_radar/radar.main.c		\
 		tp_radar/pos_from_accurate.c	\
 		tp_radar/put_pixel.c		\
 		tp_radar/move_forward.c		\
-		tp_radar/tile_size.c		\
-		tp_radar/xsupy.c		\
-		tp_radar/ysupx.c		\
 		tp_radar/get_value.c		\
-		tp_radar/get_ratio.c
+		tp_radar/get_ratio.c		\
+		tp_radar/deg_to_rads.c
 
 OBJS	=	$(SRCS:.c=.o)
 
