@@ -8,6 +8,7 @@
 
 #ifndef MAP_H_
 #define MAP_H_
+
 struct map {
     int tile_size;
     int width;

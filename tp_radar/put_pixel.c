@@ -18,10 +18,10 @@ void put_pixel(t_bunny_position *pos,
     int i;
 
     i = 0;
-    width = px -> clipable.clip_width;
-    height = px -> clipable.clip_height;
-    tmp = (unsigned int *) px -> pixels;
-    i = (width * pos -> y) + pos -> x;
+    width = px->clipable.clip_width;
+    height = px->clipable.clip_height;
+    tmp = (unsigned int *) px->pixels;
+    i = (width * pos->y) + pos->x;
     if (i >= 0 && i < height * width) {
             tmp[i] = color;
         }
