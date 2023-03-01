@@ -11,13 +11,13 @@ int main(void)
     t_bunny_accurate_position pos;
 
     int mx[6 * 6] = {
-            1, 1, 1, 1, 1, 1,
-            1, 0, 0, 0, 0, 1,
-            1, 0, 0, 0, 0, 1,
-            1, 0, 0, 0, 1, 1,
-            1, 1, 0, 1, 1, 1,
-            1, 1, 1, 1, 1, 1,
-            };
+        1, 1, 1, 1, 1, 1,
+        1, 0, 0, 0, 0, 1,
+        1, 0, 0, 0, 0, 1,
+        1, 0, 0, 0, 1, 1,
+        1, 1, 0, 1, 1, 1,
+        1, 1, 1, 1, 1, 1,
+    };
     struct map map;
     map.width     = 6;
     map.height    = 6;
@@ -46,14 +46,15 @@ int main(void)
     while (i <= 360) {
         angle = deg_to_rads(i);
         pixel = send_ray(&map, &pos, angle);
+        pixel.x *= map.tile_size;
+        pixel.y *= map.tile_size;
         posa = pos_from_accurate(&pixel);
         stu_draw_line(RED, &start, &posa, pxa);
         bunny_blit(&win->buffer, &pxa->clipable, NULL);
         bunny_display(win);
         stu_clear_pixelarray(pxa, BLACK);
         i += 1;
-        }
-
+    }
     bunny_blit(&win->buffer, &pxa->clipable, NULL);
     bunny_display(win);
     bunny_usleep(5e7);
